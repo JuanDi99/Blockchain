@@ -11,8 +11,8 @@ from src.blockchain import Bloquegen
 
 class Test(unittest.TestCase): 
    def test_Bloquegen(self):
-      test = Bloquegen("aaa",1,"a")
-      self.assertEqual(test.mail,"aaa")
+      test = Bloquegen("Juandiproxd@gmail.com",1,"a")
+      self.assertEqual(test.mail,"Juandiproxd@gmail.com")
 
 if __name__ == '__main__':
    unittest.main()
