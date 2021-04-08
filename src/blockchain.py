@@ -3,24 +3,30 @@ from hashlib import sha256
 import json
 
 class Bloquegen:
-    def __init__(self, email, motivo, archivo, hashAnt, hashBlq, hashVer):
-        self.email = email
+    def __init__(self, id, mail, motivo, hasharc,hashAnt):
+        self.id = id
+        self.mail = mail
         self.motivo = motivo  
-        self.archivo = archivo
+        self.archivo = hasharc
         self.hashAnt = hashAnt
-        self.hashBlq = hashBlq
-        self.hashVer = hashVer
+        self.hashBlq = ""
+        self.crearHash()
+        
 
     def crearHash(self):
         hash = json.dumps(self.__dict__, sort_keys=True)
         return sha256(hash.encode()).hexdigest()
 
+
+
 class Blockchain:
     def __init__(self):
-        self.cadena = []
+        self.lista = []
         self.crearGenesis()
 
     def crearGenesis(self):
-        bloqueGenesis = Bloquegen("", "", "", "0", "0", "0")
-        bloqueGenesis.hashBlq = bloqueGenesis.crearHash()
-        self.cadena.append(bloqueGenesis) 
+        bloqueGenesis = Bloquegen(0, "", "","0","0")
+        self.lista.append(bloqueGenesis) 
+
+    def crearBlq (self):
+        pass
