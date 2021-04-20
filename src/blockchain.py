@@ -1,20 +1,21 @@
 from src.Bloque import Bloquegen
 from datetime import datetime
 from src.Bloque import Bloquegen
-class Blockchain:
+class Blockchain(metaclass=Singleton)::
     def __init__(self):
-        self.lista = []
+        self._lista = []
         self.crearGenesis()
+        self.__zero_count = 0
 
     def crearGenesis(self):
-        bloqueGenesis = Bloquegen(0, "", "","0","0")
+        bloqueGenesis = Bloquegen(0, "", "","0","0","2021-01-01 00:00:00", self.__zero_count)
         self.lista.append(bloqueGenesis) 
 
     def dameBloqueid(self,id):
         return self.lista[id].hashBlq
     
     def crearbloq(self, mail, motivo, hasharc):
-        newBloque = Bloquegen(self.dameidsiguientebloque(), mail, motivo, hasharc, self.damehashanterior())
+        newBloque = Bloquegen(self.dameidsiguientebloque(), mail, motivo, hasharc, self.damehashanterior(),timestamp, self.__zero_count)
         self.lista.append(newBloque)
         
 
@@ -27,6 +28,14 @@ class Blockchain:
     def damehashid(self, id):
         return self.lista[id].hashBlq
 
-    def getTime(self):
-        datatime= datetime.now()
-        return datatime.isoformat
+    def damebloqueid(self,id):
+        return self.lista[id]
+
+    def setZero_count(self, count):
+        self.__zero_count = count
+    
+    def damebloquexhash(self, searchhash):
+        for bloque in self.__lista:
+            if searchhash == bloque.hashBlq:
+                return bloque
+        return 'none'
