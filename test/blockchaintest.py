@@ -9,16 +9,45 @@ from src.singleton import Singleton
 from src.Blockchain import Blockchain
 from src.Bloque import Bloquegen
 
+test = Blockchain()
+test._Blockchain__crearbloq("correo@bloqueOne.com", "prueba", "hashArc", "2021-01-01 22:00:00")
+test._Blockchain__crearbloq("correo@bloqueOne.com", "pruebaBloque2", "hashArc", "2021-01-01 22:00:10")
 
 class Test(unittest.TestCase):
     def test_bloqueGenesis(self):
-        test = Blockchain()
-        self.assertEqual(0,test.lista[0].id)
-        self.assertEqual("",test.lista[0].mail)
-        self.assertEqual("",test.lista[0].motivo)
-        self.assertEqual("0",test.lista[0].archivo)
-        self.assertEqual("0",test.lista[0].hashAnt)
-        self.assertEqual("69e0c792b76a5be3a8d03d060cad1f7f69856e8db550ccd87f0ea1ca0344bc40", test.dameBloqueid(0))
+        bloquegen = test.dameBloqueid(0)
+        self.assertEqual(0,bloquegen.id)
+        self.assertEqual("",bloquegen.mail)
+        self.assertEqual("",bloquegen.motivo)
+        self.assertEqual("0",bloquegen.archivo)
+        self.assertEqual("0",bloquegen.hashAnt)
+        self.assertEqual("2021-01-01 00:00:00", bloquegen.timestamp)
+        self.assertEqual("0bd586086ce0a8cfcf8bbbf665ca1e144277e65c0720810408307fbd7576a6c5", test.damehashid(0))
+
+    def test_2_is_bloque_One_should_to_be_true_when_bloque_One_is_created(self):
+        bloque1 = test.dameBloqueid(1)
+        self.assertEqual(1, bloque1.id)
+        self.assertEqual("correo@bloqueOne.com", bloque1.mail)
+        self.assertEqual("prueba", bloque1.motivo)
+        self.assertEqual("hashArc", bloque1.archivo)
+        self.assertEqual("0bd586086ce0a8cfcf8bbbf665ca1e144277e65c0720810408307fbd7576a6c5", bloque1.hashAnt)
+        self.assertEqual("2021-01-01 22:00:00", bloque1.timestamp)
+        self.assertEqual('0242e056cfffdf36db91f7e9199dce47138e79f29afb86e605dc277e65a42fcb', test.damehashid(1))
+    
+    def test_3_is_bloque_Two_should_to_be_true_when_bloque_two_is_created(self):
+        bloque2 = test.dameBloqueid(2)
+        self.assertEqual(2, bloque2.id)
+        self.assertEqual("correo@bloqueOne.com", bloque2.mail)
+        self.assertEqual("pruebaBloque2", bloque2.motivo)
+        self.assertEqual("hashArc", bloque2.archivo)
+        self.assertEqual("0242e056cfffdf36db91f7e9199dce47138e79f29afb86e605dc277e65a42fcb", bloque2.hashAnt)
+        self.assertEqual("2021-01-01 22:00:10", bloque2.timestamp)
+        self.assertEqual('0e0b127d6007edeaf25648c832b8db9cdccb11ce910d5ff01359aa2a9e4a8a13', test.damehashid(2))
+    
+    def test_4_is_bloque_by_hash_should_to_be_true_when_bloque_two_index_are_1(self):
+        bloqueHash = test.damebloquexhash("0bd586086ce0a8cfcf8bbbf665ca1e144277e65c0720810408307fbd7576a6c5")
+        bloque = test.dameBloqueid(0)
+        self.assertEqual(bloque, bloqueHash)
     
 if __name__ == '__main__':
     unittest.main()

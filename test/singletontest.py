@@ -7,8 +7,8 @@ import unittest
 root_folder = os.path.abspath(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(root_folder)
 
-from src.blockchain import Blockchain
-from src.bloque import Bloque
+from src.Blockchain import Blockchain
+from src.Bloque import Bloquegen
 
 class SingletonTest(unittest.TestCase):
 

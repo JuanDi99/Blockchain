@@ -1,4 +1,4 @@
 from test.blockchaintest import *
-from test.dosbloquesTest import *
+from test.dosbloquestest import *
 from test.bloqueunotest import *
 from test.singletontest import *
