@@ -24,8 +24,8 @@ class Test(unittest.TestCase):
         self.assertEqual("2021-01-01 00:00:00", bloquegen.timestamp)
         self.assertEqual("0bd586086ce0a8cfcf8bbbf665ca1e144277e65c0720810408307fbd7576a6c5", test.damehashid(0))
 
-    def test_2_is_bloque_One_should_to_be_true_when_bloque_One_is_created(self):
-        bloque1 = test.dameBloqueid(1)
+    def test_2_Bloque_uno_creado(self):
+        bloque1 = test.dameBloqueid(1) #creamos un objeto bloque y le pasamos la id que le corresponde y despues se cargan los datos
         self.assertEqual(1, bloque1.id)
         self.assertEqual("correo@bloqueOne.com", bloque1.mail)
         self.assertEqual("prueba", bloque1.motivo)
@@ -34,7 +34,7 @@ class Test(unittest.TestCase):
         self.assertEqual("2021-01-01 22:00:00", bloque1.timestamp)
         self.assertEqual('0242e056cfffdf36db91f7e9199dce47138e79f29afb86e605dc277e65a42fcb', test.damehashid(1))
     
-    def test_3_is_bloque_Two_should_to_be_true_when_bloque_two_is_created(self):
+    def test_3_Bloque_dos_creado(self):
         bloque2 = test.dameBloqueid(2)
         self.assertEqual(2, bloque2.id)
         self.assertEqual("correo@bloqueOne.com", bloque2.mail)
@@ -44,7 +44,7 @@ class Test(unittest.TestCase):
         self.assertEqual("2021-01-01 22:00:10", bloque2.timestamp)
         self.assertEqual('0e0b127d6007edeaf25648c832b8db9cdccb11ce910d5ff01359aa2a9e4a8a13', test.damehashid(2))
     
-    def test_4_is_bloque_by_hash_should_to_be_true_when_bloque_two_index_are_1(self):
+    def test_4_Identificar_bloque_por_hash(self):
         bloqueHash = test.damebloquexhash("0bd586086ce0a8cfcf8bbbf665ca1e144277e65c0720810408307fbd7576a6c5")
         bloque = test.dameBloqueid(0)
         self.assertEqual(bloque, bloqueHash)
