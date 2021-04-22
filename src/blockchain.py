@@ -3,7 +3,7 @@ import sys
 import json
 from bson import json_util
 root_folder = os.path.abspath(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-sys.path.append(root_folder)
+sys.path.append(root_folder)#Para que se posicione en la carpeta deseada
 from src.singleton import Singleton
 from datetime import datetime
 from src.Bloque import Bloquegen
@@ -45,4 +45,18 @@ class Blockchain(metaclass=Singleton): #atributos de la blockchain
         for bloque in self.__lista:
             if searchhash == bloque.hashBlq:
                 return bloque
-        
+
+    def esvalida(self):
+        hash = '0'
+        for Bloquegen in self.__lista:
+            if Bloquegen.hashAnt == hash:
+                hash = Bloquegen.hashBlq
+            else:
+                return False
+        if self.ultimobloque().hashBlq == hash:
+            return True
+        else:
+            return False
+    
+    def ultimobloque(self):
+        return self.__lista[-1]    

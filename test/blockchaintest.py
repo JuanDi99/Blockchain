@@ -14,7 +14,7 @@ test._Blockchain__crearbloq("correo@bloqueOne.com", "prueba", "hashArc", "2021-0
 test._Blockchain__crearbloq("correo@bloqueOne.com", "pruebaBloque2", "hashArc", "2021-01-01 22:00:10")
 
 class Test(unittest.TestCase):
-    def test_bloqueGenesis_es_verdadero_si_existe(self):
+    def test_1_bloqueGenesis_es_verdadero_si_existe(self):
         bloquegen = test.dameBloqueid(0)
         self.assertEqual(0,bloquegen.id)
         self.assertEqual("",bloquegen.mail)
@@ -48,6 +48,15 @@ class Test(unittest.TestCase):
         bloqueHash = test.damebloquexhash("0bd586086ce0a8cfcf8bbbf665ca1e144277e65c0720810408307fbd7576a6c5")
         bloque = test.dameBloqueid(0)
         self.assertEqual(bloque, bloqueHash)
+    
+    def test_5_validar_cadena(self):
+        message = "Error en la blockchain"
+        self.assertTrue(test.esvalida(), message)
+    
+    def test_7_ultimo_bloque(self):
+        bloqueh = test.ultimobloque()
+        bloque = test.dameBloqueid(-1)
+        self.assertEqual(bloque, bloqueh)
     
 if __name__ == '__main__':
     unittest.main()
