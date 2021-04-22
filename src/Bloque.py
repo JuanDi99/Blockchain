@@ -17,9 +17,9 @@ class Bloquegen: # Atributos del bloque
 
 
     def crearHash(self, zero_count):#metodo para crear hash teniendo en cuenta el zero count para la complejidad 
-        if zero_count == 0:
+        if zero_count == 0: #El zero count siempre esta inicializado en 0
             zero_count = 2 if (datetime.strptime(self.timestamp, '%Y-%m-%d %H:%M:%S').day % 2 == 0 ) else 1
-        while True:
+        while True:# entrara en este while hasta que pueda encontrar el hash con esa complejidad 
             newHash = self.hash()
             if newHash[0:zero_count] == '0' * zero_count:
                 break
@@ -28,7 +28,7 @@ class Bloquegen: # Atributos del bloque
         return newHash
 
     def hash(self):#hashear los datos 
-        hash = json.dumps(self.__dict__, sort_keys=True, default=json_util.default)
+        hash = json.dumps(self.__dict__, sort_keys=True, default=json_util.default)#todos los datos del bloque se transforman en un string
         return sha256(hash.encode()).hexdigest()
 
 

@@ -14,7 +14,7 @@ test._Blockchain__crearbloq("correo@bloqueOne.com", "prueba", "hashArc", "2021-0
 test._Blockchain__crearbloq("correo@bloqueOne.com", "pruebaBloque2", "hashArc", "2021-01-01 22:00:10")
 
 class Test(unittest.TestCase):
-    def test_bloqueGenesis(self):
+    def test_bloqueGenesis_es_verdadero_si_existe(self):
         bloquegen = test.dameBloqueid(0)
         self.assertEqual(0,bloquegen.id)
         self.assertEqual("",bloquegen.mail)

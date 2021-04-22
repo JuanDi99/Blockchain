@@ -9,7 +9,7 @@ sys.path.append(root_folder)
 from src.Blockchain import Blockchain
 from src.Bloque import Bloquegen
 class BloqueTest(unittest.TestCase):
- def test_bloqueuno(self):
+ def test_bloqueuno_es_verdadero_cuando_existe(self):
         test = Bloquegen(0,"juandi@gmail.com", "prueba", "hashArc","hashanterior","2021-04-11 21:00:00",0)
         self.assertEqual(0, test.id)
         self.assertEqual("juandi@gmail.com", test.mail)
