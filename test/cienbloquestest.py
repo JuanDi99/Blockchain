@@ -17,5 +17,5 @@ class Bloques100Test(unittest.TestCase):
         bloque = Bloquegen(50, "juandi@gmail.com", "test", "hashArch",test.dameBloqueid(49).hashBlq, "2021-04-12 13:00:00", 0)
         self.assertEqual(bloque.hashBlq, bloque50.hashBlq)# Se compara el hash del bloque con el de la blockchain
 
-if __name__ == '__main__':
-    unittest.main()
+if __name__ == '__main__':unittest.main()
+    
